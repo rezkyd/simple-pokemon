@@ -32,12 +32,12 @@ export type PokemonDispatchTypes =
   | PokemonDetail
   | PokemonFail;
 
-export const GetPokemon = (size: number) => async (
+export const GetPokemon = (size: number, offset?: number) => async (
   dispatch: Dispatch<PokemonDispatchTypes>
 ) => {
   try {
     dispatch({ type: POKEMON_LOADING });
-    const res = await PokemonService.get(size);
+    const res = await PokemonService.get(size, offset);
     console.log("response: ", res.data);
     dispatch({ type: POKEMON_LIST, payload: res.data });
   } catch (e) {
