@@ -38,19 +38,22 @@ const MyPokemonList: React.FC<Props> = (props) => {
   const [alert, setAlert] = useState("");
   const [selectedPokemon, setSelectedPokemon] = useState<NamedResource>();
 
+  const handleClose = () => {
+    setAlertOpen(false);
+  };
+
   const handleRename = (resource: NamedResource) => {
     setAlertOpen(true);
     setAlert("rename");
     setSelectedPokemon(resource);
   };
+
   const handleRemove = (resource: NamedResource) => {
     setAlertOpen(true);
     setAlert("remove");
     setSelectedPokemon(resource);
   };
-  const handleClose = () => {
-    setAlertOpen(false);
-  };
+
   const handleConfirm = async () => {
     if (alert === "rename") {
       dispatch(RenameMyPokemon(selectedPokemon!));
@@ -171,7 +174,11 @@ const MyPokemonList: React.FC<Props> = (props) => {
                   <Typography variant="subtitle2">Cancel</Typography>
                 </Button>
               )}
-              <Button variant="text" onClick={handleConfirm}>
+              <Button
+                disabled={myPokemonState.loading}
+                variant="text"
+                onClick={handleConfirm}
+              >
                 <Typography variant="subtitle2">Confirm</Typography>
               </Button>
             </Box>

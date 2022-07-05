@@ -1,8 +1,6 @@
 import axios from "axios";
 
-const http = axios.create({
-  baseURL: "http://localhost:8080/pokemon/",
-});
+const http = axios.create({ baseURL: "http://localhost:3000/pokemon" });
 
 type Response = {
   catchStatus?: boolean;

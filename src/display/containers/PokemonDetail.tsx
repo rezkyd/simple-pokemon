@@ -52,12 +52,12 @@ const PokemonDetail: React.FC<Props> = (props) => {
   };
 
   const handleCatch = async () => {
-    setAlertOpen(true);
     if (await dispatch(CatchPokemon())) {
       setSuccessCatch(true);
     } else {
       setSuccessCatch(false);
     }
+    setAlertOpen(true);
   };
 
   useEffect(() => {

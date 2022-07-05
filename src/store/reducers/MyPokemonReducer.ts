@@ -60,12 +60,9 @@ const myPokemonReducer = (
       const index = state.pokemons?.results?.findIndex(
         (v) => v.nickname === action.payload.prevNickname
       );
-      console.log("index", index);
       const temp = state.pokemons?.results?.slice();
-      console.log("splicing 1", temp);
       if (temp && index !== undefined && index >= 0) {
         temp.splice(index, 1, action.payload);
-        console.log("splicing 2", temp);
       }
       return {
         ...state,
